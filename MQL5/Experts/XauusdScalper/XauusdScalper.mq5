@@ -10,11 +10,11 @@
 //|  No EA guarantees profit. Backtest and demo-test before live use.|
 //+------------------------------------------------------------------+
 #property copyright "TRADING SYSTEM"
-#property version   "1.20"
+#property version   "1.21"
 #property description "Regime-adaptive XAUUSD M5 scalper: trend pullback, mean reversion, volatility breakout"
 #property description "and liquidity-sweep reversal strategies under one shared risk manager."
 #property description "On-chart dashboard + equity-drawdown circuit breaker with DD-aware lot sizing."
-#property description "v1.20: denser scalp cadence (quiet AND-gate, wider sessions, softer entries)."
+#property description "v1.21: HighGrowth risk profile (fractional-Kelly style high risk option)."
 
 #include "Include/Common.mqh"
 #include "Include/MarketData.mqh"
@@ -294,8 +294,8 @@ void ResolveProfile()
 bool ValidateInputs()
   {
    bool ok = true;
-   if(g_profile.riskPct <= 0.0 || g_profile.riskPct > 5.0)
-     { Print("Risk per trade must be in (0, 5] %"); ok = false; }
+   if(g_profile.riskPct <= 0.0 || g_profile.riskPct > 8.0)
+     { Print("Risk per trade must be in (0, 8] %"); ok = false; }
    if(g_profile.slAtrMult < 1.0)
      { Print("Stop ATR multiple below 1.0 is too tight for gold (stop-hunt prone)"); ok = false; }
    if(g_profile.maxStopAtrMult <= g_profile.slAtrMult)
@@ -845,6 +845,8 @@ int OnInit()
    PrintFormat("XauusdScalper ready on %s %s | digits %d point %g | profile %s risk %.2f%% maxDD %.2f%% | strategies: %s | %s",
                _Symbol, EnumToString(g_tf), _Digits, _Point, g_profile.name, g_profile.riskPct, g_profile.maxDDPct,
                g_selector.Summary(), IsHedgingAccount() ? "hedging" : "netting");
+   if(InpRiskProfile == PROFILE_HIGH_GROWTH)
+      Print("HighGrowth profile: fractional-Kelly style (~3.5% risk / 30% equity DD). High variance — not a guarantee of profit. Demo/stress-test first.");
    return INIT_SUCCEEDED;
   }
 

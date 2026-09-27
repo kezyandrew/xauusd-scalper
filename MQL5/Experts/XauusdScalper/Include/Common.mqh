@@ -54,7 +54,8 @@ enum ENUM_RISK_PROFILE
    PROFILE_CONSERVATIVE = 0, // Conservative
    PROFILE_BALANCED     = 1, // Balanced
    PROFILE_AGGRESSIVE   = 2, // Aggressive
-   PROFILE_CUSTOM       = 3  // Custom (use the "Custom risk" inputs)
+   PROFILE_HIGH_GROWTH  = 3, // High Growth (fractional-Kelly style, high variance)
+   PROFILE_CUSTOM       = 4  // Custom (use the "Custom risk" inputs)
   };
 
 //--- What to do with open trades whose strategy no longer matches the regime

@@ -59,6 +59,15 @@ void GetProfilePreset(const ENUM_RISK_PROFILE p, SRiskProfile &r)
          r.trailStartR = 1.5; r.trailAtrMult = 2.2; r.tpR = 3.0;
          r.lossStreakCount = 4; r.lossStreakFactor = 0.5; r.lossStreakPauseMin = 30;
          break;
+      case PROFILE_HIGH_GROWTH:
+         r.name = "HighGrowth";
+         r.riskPct = 3.5;  r.dailyLossPct = 8.0; r.maxDDPct = 30.0; r.throttleDDPct = 15.0; r.throttleFactor = 0.4;
+         r.maxPositions = 4; r.maxOpenRiskPct = 8.0; r.maxTradesPerDay = 36;
+         r.slAtrMult = 1.5; r.maxStopAtrMult = 3.0;
+         r.beTriggerR = 0.6; r.beLockR = 0.15; r.partialPct = 40.0;
+         r.trailStartR = 0.9; r.trailAtrMult = 1.5; r.tpR = 1.6;
+         r.lossStreakCount = 2; r.lossStreakFactor = 0.35; r.lossStreakPauseMin = 20;
+         break;
       default: // PROFILE_BALANCED (Custom starts from these values too)
          r.name = "Balanced";
          r.riskPct = 1.0;  r.dailyLossPct = 3.0; r.maxDDPct = 12.0; r.throttleDDPct = 6.0;  r.throttleFactor = 0.5;

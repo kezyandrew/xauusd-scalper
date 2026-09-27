@@ -1,4 +1,4 @@
-XauusdScalper v1.20
-branch: cursor/xauusd-m5-scalper-ea-b451
-commit: 9b2ff32
-synced: 2026-09-26T07:34:05Z
+XauusdScalper v1.21
+github: https://github.com/kezyandrew/xauusd-scalper.git
+notes: HighGrowth risk profile (fractional-Kelly style)
+synced: 2026-09-27
